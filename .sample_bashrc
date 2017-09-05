@@ -1,0 +1,16 @@
+# filename: .bashrc
+# Profile Config for interacting with gitTracker
+
+# gitTracker Script
+# ---------------------------------------------------------------
+export primaryID=`ps | grep bash | head -n 1 | awk '{print $1;}'`
+export currentID=`echo $$`
+
+if [[ "$primaryID" == "$currentID" ]]
+  then
+    # Write buffer to history file
+    export PROMPT_COMMAND='history -a'
+    # Execute checkScript
+    gitTracker.sh
+fi
+# ---------------------------------------------------------------
