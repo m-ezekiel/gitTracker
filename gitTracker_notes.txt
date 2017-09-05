@@ -1,0 +1,34 @@
+------------------------
+| gitTracker_notes.txt |
+------------------------
+
+September 04, 2017
+
+I mostly got it.  I need to define a routine that prevents it from writing until a change is made.  Like...
+
+if (currentDir != prevDir) {
+    write outTime
+    if it's a git repo, write in time
+}
+
+
+SEPTEMBER 05, 2017
+
+1 - verify primary shellID
+2 - export history
+3 - execute checkScript
+    a. currentDir = suffix
+        (ex. 'style-emulator/', 'Documents/style-emulator/')
+    b. check for gitFile
+        test -e $HOME/Documents/$currentDir.git
+        test -e $HOME/$currentDir.git
+    c. Write data (if gitFile exists)
+        get inTime and other vars
+        if curr=prev, then do nothing
+        if curr!=prev, then write entry
+
+cat $HOME/.bash_history | grep cd | tail -n 1 | awk '{print $2;}' | sed 's/Documents\///'
+
+start=`date +%s`
+end=`date +%s`
+runtime=$((end-start))
